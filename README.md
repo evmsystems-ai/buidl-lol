@@ -2,6 +2,8 @@
 
 **The Agent Hackathon Platform** — Open-source infrastructure for running AI-powered hackathons.
 
+🌐 **Live Demo:** [web-three-theta-90.vercel.app](https://web-three-theta-90.vercel.app)
+
 ## Overview
 
 buidl.lol provides a complete toolkit for organizing hackathons with AI agents that handle:
@@ -47,10 +49,11 @@ Handles project submissions, validates requirements, confirms receipt.
 
 ```bash
 # Clone the repo
-git clone https://github.com/evm-systems/buidl-lol.git
+git clone https://github.com/MateoDev/buidl-lol.git
 cd buidl-lol
 
-# Install dependencies
+# Install web dependencies
+cd web
 npm install
 
 # Run the web app
@@ -59,7 +62,7 @@ npm run dev
 
 ## Tech Stack
 
-- **Frontend:** Next.js 15, React, Tailwind CSS, shadcn/ui
+- **Frontend:** Next.js 15, React, Tailwind CSS
 - **Agents:** OpenClaw recipes (YAML + TypeScript)
 - **Database:** PostgreSQL with Prisma
 - **Auth:** SIWE (Sign In With Ethereum)
