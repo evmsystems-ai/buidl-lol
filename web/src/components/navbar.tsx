@@ -21,7 +21,7 @@ export function Navbar() {
             Agents
           </Link>
           <a
-            href="https://github.com/MateoDev/buidl-lol"
+            href="https://github.com/evmsystems-ai/buidl-lol"
             target="_blank"
             className="text-gray-400 hover:text-white transition"
           >

@@ -185,7 +185,7 @@ export default function AgentsPage() {
             your existing tools.
           </p>
           <a
-            href="https://github.com/MateoDev/buidl-lol/tree/main/agents"
+            href="https://github.com/evmsystems-ai/buidl-lol/tree/main/agents"
             target="_blank"
             className="text-purple-400 hover:text-purple-300"
           >

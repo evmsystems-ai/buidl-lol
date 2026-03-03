@@ -4,6 +4,9 @@
 
 🌐 **Live Demo:** [web-three-theta-90.vercel.app](https://web-three-theta-90.vercel.app)
 
+[![GitHub Stars](https://img.shields.io/github/stars/evmsystems-ai/buidl-lol?style=social)](https://github.com/evmsystems-ai/buidl-lol)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ## Overview
 
 buidl.lol provides a complete toolkit for organizing hackathons with AI agents that handle:
@@ -49,7 +52,7 @@ Handles project submissions, validates requirements, confirms receipt.
 
 ```bash
 # Clone the repo
-git clone https://github.com/MateoDev/buidl-lol.git
+git clone https://github.com/evmsystems-ai/buidl-lol.git
 cd buidl-lol
 
 # Install web dependencies

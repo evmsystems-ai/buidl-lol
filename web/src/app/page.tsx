@@ -59,7 +59,7 @@ export default function Home() {
           <a href="#how-it-works" className="text-gray-400 hover:text-white transition">How It Works</a>
           <a href="#dashboard" className="text-gray-400 hover:text-white transition">Dashboard</a>
           <a
-            href="https://github.com/MateoDev/buidl-lol"
+            href="https://github.com/evmsystems-ai/buidl-lol"
             target="_blank"
             className="px-4 py-2 bg-white text-black font-medium rounded-lg hover:bg-gray-200 transition"
           >
@@ -83,14 +83,14 @@ export default function Home() {
         </p>
         <div className="flex gap-4 justify-center flex-wrap">
           <a
-            href="https://github.com/MateoDev/buidl-lol"
+            href="https://github.com/evmsystems-ai/buidl-lol"
             target="_blank"
             className="px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 font-semibold rounded-xl hover:opacity-90 transition text-lg"
           >
             🚀 Clone the Recipe
           </a>
           <a
-            href="https://github.com/MateoDev/buidl-lol"
+            href="https://github.com/evmsystems-ai/buidl-lol"
             target="_blank"
             className="px-8 py-4 border border-gray-600 rounded-xl hover:border-gray-400 transition text-lg"
           >
@@ -139,7 +139,7 @@ export default function Home() {
             <h3 className="text-xl font-semibold mb-2">Build Your Own</h3>
             <p className="text-gray-400 mb-4">Add custom agents for your specific hackathon needs</p>
             <a
-              href="https://github.com/MateoDev/buidl-lol/tree/main/agents"
+              href="https://github.com/evmsystems-ai/buidl-lol/tree/main/agents"
               target="_blank"
               className="text-purple-400 hover:text-purple-300 font-medium"
             >
@@ -166,7 +166,7 @@ export default function Home() {
         </div>
         <div className="text-center mt-12">
           <a
-            href="https://github.com/MateoDev/buidl-lol#quick-start"
+            href="https://github.com/evmsystems-ai/buidl-lol#quick-start"
             target="_blank"
             className="inline-flex items-center gap-2 px-6 py-3 bg-gray-800 rounded-xl hover:bg-gray-700 transition"
           >
@@ -345,7 +345,7 @@ export default function Home() {
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <a
-              href="https://github.com/MateoDev/buidl-lol"
+              href="https://github.com/evmsystems-ai/buidl-lol"
               target="_blank"
               className="px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl font-semibold hover:opacity-90 transition text-lg"
             >
@@ -398,8 +398,8 @@ export default function Home() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="text-xl font-bold">🏗️ buidl.lol</div>
             <div className="flex gap-8 text-gray-400">
-              <a href="https://github.com/MateoDev/buidl-lol" target="_blank" className="hover:text-white">GitHub</a>
-              <a href="https://github.com/MateoDev/buidl-lol/tree/main/agents" target="_blank" className="hover:text-white">Docs</a>
+              <a href="https://github.com/evmsystems-ai/buidl-lol" target="_blank" className="hover:text-white">GitHub</a>
+              <a href="https://github.com/evmsystems-ai/buidl-lol/tree/main/agents" target="_blank" className="hover:text-white">Docs</a>
               <a href="https://discord.gg/buidl" target="_blank" className="hover:text-white">Discord</a>
               <a href="https://twitter.com/buidl_lol" target="_blank" className="hover:text-white">Twitter</a>
             </div>
