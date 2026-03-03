@@ -85,7 +85,7 @@ export default function SubmissionsPage() {
     setLoading(false);
   }, []);
 
-  const tracks = ["all", ...new Set(submissions.map((s) => s.track?.name).filter(Boolean))];
+  const tracks = ["all", ...new Set(submissions.map((s) => s.track?.name).filter((t): t is string => Boolean(t)))];
   const filteredSubmissions = submissions.filter(
     (s) => filter === "all" || s.track?.name === filter
   );
