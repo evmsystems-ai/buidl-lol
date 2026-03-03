@@ -1,0 +1,182 @@
+# ============================================================================
+# Organizer Agent Cron Jobs
+# ============================================================================
+# Scheduled tasks that run automatically during the hackathon.
+# Uses standard cron syntax: minute hour day-of-month month day-of-week
+
+jobs:
+  # -------------------------------------------------------------------------
+  # Daily Operations
+  # -------------------------------------------------------------------------
+  
+  - name: daily_standup
+    description: "Post daily hackathon update with stats and tips"
+    schedule: "0 9 * * *"  # 9:00 AM UTC daily
+    enabled: true
+    task: |
+      Post the daily standup update to the announcements channel.
+      Include: day number, time remaining, team count, submission count.
+      Add a relevant tip for the current phase.
+
+  - name: phase_check
+    description: "Check if hackathon should transition to next phase"
+    schedule: "0 * * * *"  # Every hour
+    enabled: true
+    task: |
+      Check current time against hackathon schedule.
+      If a phase transition is due, update status and announce.
+      Phases: REGISTRATION → HACKING → SUBMISSION → JUDGING → AWARDS → COMPLETE
+
+  # -------------------------------------------------------------------------
+  # Registration Phase
+  # -------------------------------------------------------------------------
+  
+  - name: registration_reminder
+    description: "Remind people to register before deadline"
+    schedule: "0 12 * * *"  # Noon UTC daily
+    enabled: true
+    condition: "phase == REGISTRATION"
+    task: |
+      If registration closes in < 3 days, post a reminder.
+      Include: time remaining, how to register, what to expect.
+
+  # -------------------------------------------------------------------------
+  # Hacking Phase
+  # -------------------------------------------------------------------------
+  
+  - name: midpoint_check
+    description: "Halfway point encouragement"
+    schedule: "0 15 * * *"  # 3 PM UTC
+    enabled: true
+    condition: "phase == HACKING && at_midpoint"
+    task: |
+      Post a midpoint update when hackathon is 50% complete.
+      Include: encouragement, time remaining, tips for pushing through.
+
+  - name: mentor_hours
+    description: "Announce mentor availability"
+    schedule: "0 10,14,18 * * *"  # 10 AM, 2 PM, 6 PM UTC
+    enabled: true
+    condition: "phase == HACKING"
+    task: |
+      Post mentor availability reminder in help channel.
+      Encourage teams to ask questions.
+
+  # -------------------------------------------------------------------------
+  # Submission Phase (Last 24 Hours)
+  # -------------------------------------------------------------------------
+  
+  - name: submission_24h
+    description: "24 hour warning"
+    schedule: "0 18 * * *"  # Assuming 6 PM deadline next day
+    enabled: true
+    condition: "hours_until_deadline == 24"
+    task: |
+      POST URGENT REMINDER: 24 hours remaining.
+      List submission requirements.
+      Link to submission form.
+      Encourage "submit something, anything!"
+
+  - name: submission_12h
+    description: "12 hour warning"
+    schedule: "0 6 * * *"
+    enabled: true
+    condition: "hours_until_deadline == 12"
+    task: |
+      POST REMINDER: 12 hours remaining.
+      "Have you started your demo video?"
+
+  - name: submission_6h
+    description: "6 hour warning"
+    schedule: "0 12 * * *"
+    enabled: true
+    condition: "hours_until_deadline == 6"
+    task: |
+      POST REMINDER: 6 hours remaining.
+      Focus on getting something submitted.
+
+  - name: submission_2h
+    description: "2 hour warning"
+    schedule: "0 16 * * *"
+    enabled: true
+    condition: "hours_until_deadline == 2"
+    task: |
+      POST URGENT: 2 hours remaining!
+      No more features — polish and submit.
+
+  - name: submission_1h
+    description: "Final hour warning"
+    schedule: "0 17 * * *"
+    enabled: true
+    condition: "hours_until_deadline == 1"
+    task: |
+      POST FINAL WARNING: 1 hour remaining!
+      Submit NOW. You can update until deadline.
+
+  - name: submission_closed
+    description: "Submissions officially closed"
+    schedule: "0 18 * * *"
+    enabled: true
+    condition: "hours_until_deadline == 0"
+    task: |
+      POST: Submissions are now CLOSED.
+      Thank everyone for building.
+      Announce judging timeline.
+      Celebrate total submissions.
+
+  # -------------------------------------------------------------------------
+  # Judging Phase
+  # -------------------------------------------------------------------------
+  
+  - name: judging_update
+    description: "Update participants on judging progress"
+    schedule: "0 12 * * *"
+    enabled: true
+    condition: "phase == JUDGING"
+    task: |
+      Post update: "Judges are reviewing submissions!"
+      Remind when results will be announced.
+      Keep excitement high.
+
+  # -------------------------------------------------------------------------
+  # Post-Hackathon
+  # -------------------------------------------------------------------------
+  
+  - name: feedback_request
+    description: "Ask participants for feedback"
+    schedule: "0 12 * * *"
+    enabled: true
+    condition: "phase == COMPLETE && days_since_end == 1"
+    task: |
+      Send feedback survey to all participants.
+      Thank them for participating.
+      Share what's next (grants, accelerators, etc.)
+
+# ============================================================================
+# Conditional Triggers (Event-Based)
+# ============================================================================
+
+triggers:
+  - event: "user_registered"
+    task: |
+      Send welcome message with next steps.
+      Point to team formation channel.
+      Share resources.
+
+  - event: "team_formed"
+    task: |
+      Congratulate new team.
+      Share team-specific resources.
+      Remind of submission requirements.
+
+  - event: "submission_received"
+    task: |
+      Confirm receipt.
+      Remind they can update until deadline.
+      Thank them for submitting.
+
+  - event: "mentor_escalation"
+    task: |
+      Alert human organizers.
+      Acknowledge to participant.
+      Track response time.

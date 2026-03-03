@@ -1,0 +1,187 @@
+# ============================================================================
+# buidl.lol Hackathon Configuration
+# ============================================================================
+# Copy this file to hackathon.yaml and fill in your details.
+# All dates should be in ISO 8601 format with timezone.
+
+# Basic Info
+name: "Agent Economy Hack"
+tagline: "Build autonomous agents that create value"
+description: |
+  The first hackathon where AI agents are first-class citizens.
+  Build agents that trade, create, collaborate, and ship.
+
+theme: "Autonomous Economic Actors"
+website: "https://buidl.lol/agent-economy-hack"
+
+# Dates (all in UTC)
+dates:
+  registration_open: "2026-03-01T00:00:00Z"
+  registration_close: "2026-03-14T23:59:59Z"
+  kickoff: "2026-03-15T09:00:00Z"
+  hacking_start: "2026-03-15T10:00:00Z"
+  submission_deadline: "2026-03-22T18:00:00Z"
+  judging_start: "2026-03-23T09:00:00Z"
+  judging_end: "2026-03-24T18:00:00Z"
+  awards: "2026-03-24T20:00:00Z"
+
+# Time zone for display (dates stored in UTC)
+display_timezone: "America/Los_Angeles"
+
+# Discord Configuration
+discord:
+  guild_id: "YOUR_GUILD_ID"
+  channels:
+    announcements: "1234567890123456789"  # Channel IDs
+    help: "1234567890123456790"
+    team_formation: "1234567890123456791"
+    resources: "1234567890123456792"
+    submissions: "1234567890123456793"
+    general: "1234567890123456794"
+  roles:
+    participant: "1234567890123456795"
+    judge: "1234567890123456796"
+    mentor: "1234567890123456797"
+    organizer: "1234567890123456798"
+
+# Tracks
+tracks:
+  - id: agent_infra
+    name: "🤖 Agent Infrastructure"
+    description: "Tools and platforms that help other agents succeed"
+    grand_prize: 10000
+    bounties:
+      - sponsor: "OpenClaw"
+        amount: 2500
+        description: "Best OpenClaw integration"
+      - sponsor: "Gaia"
+        amount: 2500
+        description: "Best Gaia node deployment"
+
+  - id: economic_agents
+    name: "💰 Economic Agents"
+    description: "Agents that trade, invest, or manage assets"
+    grand_prize: 10000
+    bounties:
+      - sponsor: "Circle"
+        amount: 3000
+        description: "Best USDC integration"
+
+  - id: social_agents
+    name: "🌐 Social Agents"
+    description: "Agents that collaborate, communicate, or create content"
+    grand_prize: 10000
+    bounties:
+      - sponsor: "Farcaster"
+        amount: 2000
+        description: "Best social agent on Farcaster"
+
+# Prizes
+prizes:
+  total_pool: 50000
+  currency: "USDC"
+  
+  grand_prizes:
+    - track: "agent_infra"
+      amount: 10000
+      place: 1
+    - track: "economic_agents"
+      amount: 10000
+      place: 1
+    - track: "social_agents"
+      amount: 10000
+      place: 1
+  
+  overall:
+    - name: "Best Overall"
+      amount: 10000
+    - name: "Best Demo"
+      amount: 5000
+    - name: "Most Creative"
+      amount: 5000
+
+# Judges
+judges:
+  - name: "Alice Smith"
+    title: "Partner, Agent Ventures"
+    avatar: "https://example.com/alice.jpg"
+  - name: "Bob Chen"
+    title: "CTO, AgentCorp"
+    avatar: "https://example.com/bob.jpg"
+
+# Rules
+rules:
+  team_size:
+    min: 1
+    max: 5
+  eligibility:
+    - "Open to all — no geographic restrictions"
+    - "Must be 18+ or have parental consent"
+  requirements:
+    - "Projects must be built during the hackathon"
+    - "Use of existing libraries and APIs is encouraged"
+    - "All code must be open source"
+  submission:
+    required:
+      - "GitHub repository URL"
+      - "Demo video (max 3 minutes)"
+      - "Project description (max 500 words)"
+    optional:
+      - "Live demo URL"
+      - "Slide deck"
+
+# Resources
+resources:
+  - name: "Starter Kit"
+    url: "https://github.com/evm-systems/buidl-starter-kit"
+    description: "Pre-configured project template"
+  - name: "OpenClaw Docs"
+    url: "https://docs.openclaw.ai"
+    description: "Agent runtime documentation"
+  - name: "Sponsor APIs"
+    url: "https://buidl.lol/resources"
+    description: "API keys and documentation"
+
+# Agent Configuration
+agent:
+  # How often to post daily updates (UTC)
+  daily_update_time: "09:00"
+  
+  # Reminder frequency in last 24h before deadline
+  final_reminder_hours: [24, 12, 6, 2, 1]
+  
+  # Auto-approve registrations matching these criteria
+  auto_approve: true
+  auto_approve_criteria:
+    - "github_repos >= 5"
+    - "previous_hackathon = true"
+  
+  # Escalation settings
+  escalation:
+    channel: "organizer-alerts"
+    ping_role: "organizer"
+    keywords:
+      - "harassment"
+      - "unsafe"
+      - "legal"
+      - "refund"
+      - "cheat"
+
+# Sponsors
+sponsors:
+  - name: "OpenClaw"
+    logo: "https://openclaw.ai/logo.png"
+    tier: "platinum"
+    bounty: 2500
+  - name: "Circle"
+    logo: "https://circle.com/logo.png"
+    tier: "gold"
+    bounty: 3000
+  - name: "Gaia"
+    logo: "https://gaianet.ai/logo.png"
+    tier: "gold"
+    bounty: 2500
+  - name: "Farcaster"
+    logo: "https://farcaster.xyz/logo.png"
+    tier: "silver"
+    bounty: 2000
