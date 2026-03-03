@@ -34,16 +34,25 @@ export async function POST(request: NextRequest) {
     // Parse the SIWE message
     const siweMessage = parseSiweMessage(message);
     
+    if (!siweMessage.address) {
+      return NextResponse.json(
+        { error: "Invalid message: missing address" },
+        { status: 400 }
+      );
+    }
+
     if (!siweMessage.nonce || siweMessage.nonce !== session.nonce) {
       return NextResponse.json(
         { error: "Invalid nonce" },
         { status: 400 }
       );
     }
+    
+    const address = siweMessage.address as `0x${string}`;
 
     // Validate the message
     const isValid = await validateSiweMessage({
-      address: siweMessage.address,
+      address,
       message,
     });
 
@@ -56,7 +65,7 @@ export async function POST(request: NextRequest) {
 
     // Verify the signature
     const valid = await publicClient.verifyMessage({
-      address: siweMessage.address,
+      address,
       message,
       signature,
     });
@@ -70,21 +79,19 @@ export async function POST(request: NextRequest) {
 
     // Create or update user in database
     const user = await prisma.user.upsert({
-      where: { address: siweMessage.address.toLowerCase() },
+      where: { address: address.toLowerCase() },
       update: {
         updatedAt: new Date(),
       },
       create: {
-        address: siweMessage.address.toLowerCase(),
+        address: address.toLowerCase(),
       },
     });
 
     // Try to get ENS name
     let ensName = null;
     try {
-      ensName = await publicClient.getEnsName({
-        address: siweMessage.address as `0x${string}`,
-      });
+      ensName = await publicClient.getEnsName({ address });
       
       if (ensName && ensName !== user.ensName) {
         await prisma.user.update({
@@ -97,7 +104,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Update session
-    session.address = siweMessage.address.toLowerCase();
+    session.address = address.toLowerCase();
     session.chainId = siweMessage.chainId;
     session.isLoggedIn = true;
     session.nonce = undefined; // Clear nonce after use
