@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+@theme {
+  /* Brand Colors */
+  --color-gold: #FFD700;
+  --color-gold-dim: #B8860B;
+  --color-navy: #1A1A2E;
+  --color-navy-light: #2D2D3A;
+  --color-terminal: #00FF88;
+  --color-terminal-dim: #00CC6A;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -11,36 +21,132 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: #0F0F17;
+  color: #F5F5F5;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 /* Focus states */
 :focus-visible {
-  outline: 2px solid #18181b;
+  outline: 2px solid #FFD700;
   outline-offset: 2px;
 }
 
 /* Selection */
 ::selection {
-  background: rgba(24, 24, 27, 0.1);
+  background: rgba(255, 215, 0, 0.3);
+  color: #fff;
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f4f4f5;
+  background: #1A1A2E;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #d4d4d8;
-  border-radius: 3px;
+  background: #2D2D3A;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a1a1aa;
+  background: #3D3D4A;
+}
+
+/* Glow effects */
+.glow-gold {
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3), 0 0 40px rgba(255, 215, 0, 0.1);
+}
+
+.glow-gold:hover {
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.4), 0 0 60px rgba(255, 215, 0, 0.2);
+}
+
+.glow-terminal {
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+}
+
+/* Gradient text */
+.gradient-gold {
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-terminal {
+  background: linear-gradient(135deg, #00FF88 0%, #00FFCC 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Terminal styling */
+.terminal-text {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* Card hover */
+.card-hover {
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 215, 0, 0.3);
+}
+
+/* Status indicators */
+.status-online {
+  background: #00FF88;
+  box-shadow: 0 0 8px #00FF88;
+}
+
+.status-processing {
+  background: #FFD700;
+  box-shadow: 0 0 8px #FFD700;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Grid background */
+.bg-grid {
+  background-image: 
+    linear-gradient(rgba(255, 215, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 215, 0, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Button styles */
+.btn-gold {
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  color: #0F0F17;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-gold:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid #2D2D3A;
+  color: #F5F5F5;
+  transition: all 0.2s ease;
+}
+
+.btn-outline:hover {
+  border-color: #FFD700;
+  color: #FFD700;
 }
